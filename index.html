@@ -18,14 +18,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <title>Sweet Delights - Cart Project</title>
+  <title>HealthCheck Pro - BMI Calculator & Health Assessment</title>
   <style>
     /* --- Custom Styles --- */
     :root {
-      --primary-bg: #FFF8F0; /* Creamy background */
-      --secondary-bg: #6B4F4F; /* Dark Brown */
-      --accent-color: #D8A7B1; /* Soft Rose/Pink */
-      --text-color: #484848; /* Dark Grey */
+      --primary-bg: #F0F8FF; /* Light blue background */
+      --secondary-bg: #2C5F41; /* Medical green */
+      --accent-color: #4A90E2; /* Medical blue */
+      --success-color: #28A745; /* Success green */
+      --warning-color: #FFC107; /* Warning yellow */
+      --danger-color: #DC3545; /* Danger red */
+      --text-color: #2C3E50; /* Dark grey */
       --heading-font: 'Poppins', sans-serif;
       --body-font: 'Nunito Sans', sans-serif;
     }
@@ -68,7 +71,7 @@
       color: var(--secondary-bg); /* Dark text on light background */
     }
     .banner-title {
-      color: var(--secondary-bg); /* Dark Brown Title */
+      color: var(--secondary-bg); /* Medical green Title */
       font-weight: 700;
     }
     .banner-link {
@@ -78,28 +81,66 @@
       font-weight: 600;
     }
     .banner-link:hover {
-      background-color: #c796a0; /* Darker rose on hover */
+      background-color: #357ABD; /* Darker blue on hover */
       color: white;
-      border-color: #c796a0;
+      border-color: #357ABD;
     }
     .max-height {
         min-height: calc(100vh - 76px); /* Adjust if navbar height changes */
-        background: linear-gradient(rgba(255, 248, 240, 0.8), rgba(255, 248, 240, 0.8)), url(img/sweets-3.jpeg) center/cover no-repeat fixed; /* Subtle background image */
-         /* Using a different image for subtle background */
+        background: linear-gradient(rgba(240, 248, 255, 0.9), rgba(240, 248, 255, 0.9)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat fixed; /* Health background image */
     }
 
-    /* Cart Overlay */
+    /* Cart Overlay - Now BMI Results */
     .cart {
-      background-color: #ffffff; /* White background for cart */
+      background-color: #ffffff; /* White background for results */
       border-left: 3px solid var(--secondary-bg);
       color: var(--text-color); /* Ensure text is readable */
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     .cart-item-remove i {
-        color: var(--accent-color); /* Rose color for trash icon */
+        color: var(--accent-color); /* Blue color for close icon */
     }
      .cart-item-remove:hover i {
         color: var(--secondary-bg);
      }
+
+    /* BMI Form Styles */
+    .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+    }
+    
+    .bmi-result {
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+      text-align: center;
+    }
+    
+    .bmi-normal {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+    
+    .bmi-underweight {
+      background-color: #cce7ff;
+      border: 1px solid #b3d9ff;
+      color: #004085;
+    }
+    
+    .bmi-overweight {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+    }
+    
+    .bmi-obese {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
 
     /* Buttons */
     .btn-custom-primary {
@@ -109,9 +150,9 @@
       font-weight: 600;
     }
     .btn-custom-primary:hover {
-      background-color: #c796a0;
+      background-color: #357ABD;
       color: white;
-      border-color: #c796a0;
+      border-color: #357ABD;
     }
 
     .btn-custom-outline-secondary {
@@ -131,51 +172,10 @@
 
     /* About Section */
     #about h1 {
-        color: var(--secondary-bg); /* Brown heading */
+        color: var(--secondary-bg); /* Medical green heading */
     }
      #about p {
         color: #5a5a5a; /* Slightly darker grey for better contrast */
-     }
-
-    /* Store Section */
-     #store h1 {
-        color: var(--secondary-bg); /* Brown heading */
-     }
-     .search-box {
-        background: var(--secondary-bg);
-        color: white;
-     }
-     #search-item {
-        border-color: #ced4da; /* Default bootstrap border */
-     }
-     #search-item:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 0.2rem rgba(216, 167, 177, 0.25); /* Rose focus ring */
-     }
-     .card {
-        border: 1px solid #eee; /* Subtle border for cards */
-        transition: all 0.3s ease-in-out;
-     }
-     .card:hover {
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-     }
-     .store-item-icon {
-        background-color: var(--accent-color); /* Rose icon background */
-     }
-     .store-item-value strong {
-        color: var(--secondary-bg); /* Brown price */
-     }
-
-    /* Lightbox */
-    .lightbox-container {
-        background: rgba(0, 0, 0, 0.85); /* Darker overlay */
-    }
-    .lightbox-close, .lightbox-control {
-        color: var(--primary-bg); /* Light controls on dark overlay */
-        font-size: 1.8rem;
-    }
-     .lightbox-close:hover, .lightbox-control:hover {
-        color: var(--accent-color);
      }
 
   </style>
@@ -186,7 +186,7 @@
   <header>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg px-4 navbar-dark"> <!-- Added navbar-dark for light text on dark bg -->
-      <a class="navbar-brand" href="#"><img src="img/logo.svg" alt="Sweet Delights Logo"></a>
+      <a class="navbar-brand" href="#"><i class="fas fa-heartbeat" style="font-size: 2rem; color: #4A90E2;"></i> HealthCheck Pro</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
         <span class="toggler-icon"><i class="fas fa-bars"></i></span>
       </button>
@@ -199,21 +199,21 @@
             <a class="nav-link " href="#about">about</a> <!-- Changed href to section ID -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#store">store</a> <!-- Changed href to section ID -->
+            <a class="nav-link" href="#calculator">BMI Calculator</a> <!-- Changed href to section ID -->
           </li>
         </ul>
         <div class="nav-info-items d-none d-lg-flex ">
           <!-- single info -->
           <div class="nav-info align-items-center d-flex justify-content-between mx-lg-5">
             <span class="info-icon mx-lg-3"><i class="fas fa-phone"></i></span>
-            <p class="mb-0">+44 1234 567890</p> <!-- Example updated phone -->
+            <p class="mb-0">+1 (555) 123-4567</p> <!-- Health hotline -->
           </div>
           <!-- end of single info -->
           <!-- single info -->
           <div id="cart-info" class="nav-info align-items-center cart-info d-flex justify-content-between mx-lg-5">
-            <span class="cart-info__icon mr-lg-3"><i class="fas fa-shopping-cart"></i></span>
-            <!-- Set initial cart to 0, JS should update this -->
-            <p class="mb-0 text-capitalize"><span id="item-count">0</span> items - $<span class="item-total">0.00</span></p>
+            <span class="cart-info__icon mr-lg-3"><i class="fas fa-user-md"></i></span>
+            <!-- Set initial to health status -->
+            <p class="mb-0 text-capitalize"><span id="item-count">Your</span> Health - <span class="item-total">Assessment</span></p>
           </div>
           <!-- end of single info -->
         </div>
@@ -225,43 +225,31 @@
     <div class="container-fluid">
       <div class="row max-height justify-content-center align-items-center">
         <div class="col-10 mx-auto banner text-center">
-          <h1 class="text-capitalize">welcome to <strong class="banner-title ">Sweet Delights</strong></h1> <!-- Updated Name -->
-          <a href="#store" class="btn banner-link text-uppercase my-2">explore treats</a> <!-- Updated Button Text -->
+          <h1 class="text-capitalize">welcome to <strong class="banner-title ">HealthCheck Pro</strong></h1> <!-- Updated Name -->
+          <p class="lead text-muted mb-4">Your comprehensive BMI calculator and health assessment tool</p>
+          <a href="#calculator" class="btn banner-link text-uppercase my-2">Check Your Health</a> <!-- Updated Button Text -->
 
         </div>
-        <!-- Cart (Initially Hidden by JS/CSS) -->
+        <!-- Results Panel (Initially Hidden by JS/CSS) -->
         <div id="cart" class="cart">
-          <!-- cart item -->
-          <!-- Cart items will be added dynamically by JS -->
-          <!-- Example structure preserved for JS: -->
-          <!--
-          <div class="cart-item d-flex justify-content-between text-capitalize my-3">
-            <img src="img-cart/cake-2.jpeg" class="img-fluid rounded-circle" id="item-img" alt="">
-            <div class="item-text">
-              <p id="cart-item-title" class="font-weight-bold mb-0">cart item</p>
-              <span>$</span>
-              <span id="cart-item-price" class="cart-item-price" class="mb-0">10.99</span>
-            </div>
-            <a href="#" id='cart-item-remove' class="cart-item-remove">
-              <i class="fas fa-trash"></i>
-            </a>
+          <!-- BMI Results will be displayed here -->
+          <div id="bmi-results" style="display: none;">
+            <!-- Results content will be added dynamically by JS -->
           </div>
-           -->
-          <!-- end of cart item -->
-
-          <!-- cart total -->
-          <div class="cart-total-container d-flex justify-content-around text-capitalize mt-5">
-            <h5>total</h5>
-            <h5> $ <strong id="cart-total" class="font-weight-bold">0.00</strong> </h5> <!-- Initial total 0 -->
+          
+          <!-- Results total -->
+          <div class="cart-total-container d-flex justify-content-around text-capitalize mt-5" id="results-container" style="display: none;">
+            <h5>Your BMI</h5>
+            <h5><strong id="cart-total" class="font-weight-bold">0.0</strong></h5>
           </div>
-          <!--end cart total -->
-          <!-- cart buttons -->
-          <div class="cart-buttons-container mt-3 d-flex justify-content-between">
+          <!--end results total -->
+          <!-- results buttons -->
+          <div class="cart-buttons-container mt-3 d-flex justify-content-between" id="results-buttons" style="display: none;">
              <!-- Using custom button classes -->
-            <a href="#" id="clear-cart" class="btn btn-custom-outline-secondary text-uppercase">clear cart</a>
-            <a href="#" class="btn btn-custom-primary text-uppercase">checkout</a>
+            <a href="#" id="clear-cart" class="btn btn-custom-outline-secondary text-uppercase">Clear Results</a>
+            <a href="#calculator" class="btn btn-custom-primary text-uppercase">Recalculate</a>
           </div>
-          <!--end of  cart buttons -->
+          <!--end of results buttons -->
         </div>
       </div>
     </div>
@@ -274,14 +262,20 @@
     <div class="container">
       <div class="row">
         <div class="col-10 mx-auto col-md-6 my-5">
-          <h1 class="text-capitalize">a little <strong class="banner-title">about us</strong></h1> <!-- Updated Title -->
-           <!-- Updated placeholder text -->
-          <p class="my-4 text-muted w-75">Welcome to Sweet Delights! We pour our heart into baking, using cherished family recipes and the finest ingredients to create treats that bring joy to every occasion. From classic cakes to delightful doughnuts, every bite tells a story of tradition and passion.</p>
-          <a href="#store" class="btn btn-custom-outline-secondary text-uppercase ">explore our treats</a> <!-- Updated button text & class -->
+          <h1 class="text-capitalize">about <strong class="banner-title">your health</strong></h1> <!-- Updated Title -->
+           <!-- Updated content -->
+          <p class="my-4 text-muted w-75">HealthCheck Pro helps you understand your body mass index (BMI) and provides personalized recommendations for maintaining a healthy weight. Our easy-to-use calculator takes into account your age, height, weight, and gender to give you accurate health insights.</p>
+          <p class="my-4 text-muted w-75">BMI is a useful measure of overweight and obesity. It's calculated using your weight and height to estimate if you're in a healthy weight range for your height.</p>
+          <a href="#calculator" class="btn btn-custom-outline-secondary text-uppercase ">Calculate Your BMI</a> <!-- Updated button text & class -->
         </div>
         <div class="col-10 mx-auto col-md-6 align-self-center my-5">
-          <div class="about-img__container">
-            <img src="img/sweets-1.jpeg" class="img-fluid rounded shadow" alt="Assorted sweets"> <!-- Added rounded corners and shadow -->
+          <div class="about-img__container text-center">
+            <i class="fas fa-heartbeat" style="font-size: 200px; color: var(--accent-color); opacity: 0.8;"></i>
+            <div class="mt-3">
+              <i class="fas fa-user-md" style="font-size: 40px; color: var(--secondary-bg); margin: 0 10px;"></i>
+              <i class="fas fa-chart-line" style="font-size: 40px; color: var(--success-color); margin: 0 10px;"></i>
+              <i class="fas fa-apple-alt" style="font-size: 40px; color: var(--warning-color); margin: 0 10px;"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -289,300 +283,119 @@
   </section>
   <!-- end of about us -->
 
-  <!-- store -->
-  <section id="store" class="store py-5">
+  <!-- BMI Calculator -->
+  <section id="calculator" class="store py-5">
     <div class="container">
       <!-- section title -->
       <div class="row">
-        <div class="col-10 mx-auto col-sm-6 text-center">
-          <h1 class="text-capitalize">our delicious <strong class="banner-title">store</strong></h1> <!-- Updated Title -->
+        <div class="col-10 mx-auto col-sm-8 text-center">
+          <h1 class="text-capitalize">BMI <strong class="banner-title">Calculator</strong></h1> <!-- Updated Title -->
+          <p class="text-muted">Enter your details below to calculate your Body Mass Index and get personalized health recommendations.</p>
         </div>
       </div>
       <!-- end of section title -->
-      <!--filter buttons -->
+
+      <!-- BMI Form -->
       <div class="row">
-         <!-- Using custom button classes -->
-        <div class=" col-lg-8 mx-auto d-flex justify-content-around my-2 sortBtn flex-wrap">
-          <a href="#" class="btn btn-custom-outline-secondary text-uppercase filter-btn m-2 active" data-filter="all"> all</a> <!-- Default active class added -->
-          <a href="#" class="btn btn-custom-outline-secondary text-uppercase filter-btn m-2" data-filter="cakes">cakes</a>
-          <a href="#" class="btn btn-custom-outline-secondary text-uppercase filter-btn m-2" data-filter="cupcakes">cupcakes</a>
-          <a href="#" class="btn btn-custom-outline-secondary text-uppercase filter-btn m-2" data-filter="sweets">sweets</a>
-          <a href="#" class="btn btn-custom-outline-secondary text-uppercase filter-btn m-2" data-filter="doughnuts">doughnuts</a>
+        <div class="col-10 mx-auto col-lg-8">
+          <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+              <form id="bmi-form">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="patient-name" class="form-label font-weight-bold">
+                      <i class="fas fa-user text-primary"></i> Patient Name
+                    </label>
+                    <input type="text" class="form-control form-control-lg" id="patient-name" placeholder="Enter your full name" required>
+                  </div>
+                  
+                  <div class="col-md-6 mb-3">
+                    <label for="age" class="form-label font-weight-bold">
+                      <i class="fas fa-calendar-alt text-warning"></i> Age
+                    </label>
+                    <input type="number" class="form-control form-control-lg" id="age" placeholder="Enter your age" min="1" max="120" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="sex" class="form-label font-weight-bold">
+                      <i class="fas fa-venus-mars text-info"></i> Sex
+                    </label>
+                    <select class="form-control form-control-lg" id="sex" required>
+                      <option value="">Select your sex</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="weight" class="form-label font-weight-bold">
+                      <i class="fas fa-weight text-success"></i> Weight (kg)
+                    </label>
+                    <input type="number" class="form-control form-control-lg" id="weight" placeholder="Enter weight in kg" min="20" max="300" step="0.1" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="height" class="form-label font-weight-bold">
+                      <i class="fas fa-ruler-vertical text-danger"></i> Height (cm)
+                    </label>
+                    <input type="number" class="form-control form-control-lg" id="height" placeholder="Enter height in cm" min="100" max="250" step="0.1" required>
+                  </div>
+
+                  <div class="col-md-6 mb-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-custom-primary btn-lg btn-block">
+                      <i class="fas fa-calculator"></i> Calculate BMI
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- search box -->
-      <div class="row">
-        <div class="col-10 mx-auto col-md-6">
-          <form>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend ">
-                <span class="input-group-text search-box" id="search-icon"><i class="fas fa-search"></i></span>
-              </div>
-              <input type="text" class="form-control" placeholder='Search treats...' id="search-item"> <!-- Updated Placeholder -->
+      <!-- End BMI Form -->
+
+      <!-- BMI Results Section -->
+      <div class="row mt-5" id="results-section" style="display: none;">
+        <div class="col-10 mx-auto">
+          <div class="card shadow-lg border-0">
+            <div class="card-header bg-primary text-white text-center">
+              <h3><i class="fas fa-chart-bar"></i> Your Health Assessment</h3>
             </div>
-          </form>
+            <div class="card-body">
+              <div id="patient-summary" class="text-center mb-4">
+                <!-- Patient info will be displayed here -->
+              </div>
+              
+              <div id="bmi-display" class="text-center mb-4">
+                <!-- BMI result will be displayed here -->
+              </div>
+              
+              <div id="weight-recommendation" class="mt-4">
+                <!-- Weight recommendations will be displayed here -->
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <!--end of filter buttons -->
+      <!-- End Results Section -->
 
-      <!-- store items -->
-      <div class="row store-items" id="store-items">
-        <!-- Items structure remains the same for JS compatibility -->
-        <!-- Sample Item (Repeat structure for all items) -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/sweets-1.jpeg" class="card-img-top store-img" alt="Sweet Item 1">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">sweet item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">5</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Cupcake Item -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/cupcake-1.jpeg" class="card-img-top store-img" alt="Cupcake Item 1">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">cupcake item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">5</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Cake Item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/cake-1.jpeg" class="card-img-top store-img" alt="Cake Item 1">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">cake item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">5</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Doughnut Item -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts"> <!-- Corrected data-item typo -->
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/doughnut-1.jpeg" class="card-img-top store-img" alt="Doughnut Item 1">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">dougnut item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">5</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-         <!-- Sweet Item 2 -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/sweets-2.jpeg" class="card-img-top store-img" alt="Sweet Item 2">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">sweet item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">10</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-         <!-- Cupcake Item 2 -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/cupcake-2.jpeg" class="card-img-top store-img" alt="Cupcake Item 2">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">cupcake item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">10</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-         <!-- Cake Item 2 -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/cake-2.jpeg" class="card-img-top store-img" alt="Cake Item 2">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">cake item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">10</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Doughnut Item 2 -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts"> <!-- Corrected data-item typo -->
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/doughnut-2.jpeg" class="card-img-top store-img" alt="Doughnut Item 2">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">dougnut item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">10</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Sweet Item 3 -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/sweets-3.jpeg" class="card-img-top store-img" alt="Sweet Item 3">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">sweet item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">15</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Cupcake Item 3 -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/cupcake-3.jpeg" class="card-img-top store-img" alt="Cupcake Item 3">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">cupcake item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">15</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-        <!-- Cake Item 3 -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/cake-3.jpeg" class="card-img-top store-img" alt="Cake Item 3">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">cake item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">15</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-         <!-- Doughnut Item 3 -->
-         <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts"> <!-- Corrected data-item typo -->
-          <div class="card ">
-            <div class="img-container">
-              <img src="img/doughnut-3.jpeg" class="card-img-top store-img" alt="Doughnut Item 3">
-              <span class="store-item-icon">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-text d-flex justify-content-between text-capitalize">
-                <h5 id="store-item-name">dougnut item</h5>
-                <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold">15</strong></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end of single store item-->
-
-      </div> <!-- End of .store-items -->
     </div> <!-- End of .container -->
   </section>
-  <!--end of store items -->
+  <!--end of BMI Calculator -->
 
-
-  <!-- modal-container -->
-  <div class="container-fluid ">
-    <div class="row lightbox-container align-items-center">
-      <div class="col-10 col-md-10 mx-auto text-right lightbox-holder">
-        <span class="lightbox-close"><i class="fas fa-window-close"></i></span>
-        <div class="lightbox-item">
-          <!-- Lightbox image will be loaded here by JS -->
-        </div>
-        <span class="lightbox-control btnLeft"><i class="fas fa-caret-left"></i></span>
-        <span class="lightbox-control btnRight"><i class="fas fa-caret-right"></i></span>
-      </div>
-    </div>
-  </div>
 
 
   <!-- jquery -->
   <script src="js/jquery-3.3.1.min.js"></script>
   <!-- bootstrap js -->
   <script src="js/bootstrap.bundle.min.js"></script>
-  <!-- script js -->
-  <script src="js/app.js"></script> <!-- Crucial for functionality -->
+  <!-- BMI Calculator script -->
+  <script src="js/bmi-calculator.js"></script>
 </body>
 
 </html>
